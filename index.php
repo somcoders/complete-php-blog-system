@@ -1,30 +1,5 @@
-<!doctype html>
-<html>
-    <head>
-        <title>BoggaHore</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <link href="naqshad.css" rel="stylesheet" type="text/css" />
-    </head>
-    
-    <body>
-    
-     
-    <header class="header clearfix">
+<?php include("inc/header.php"); ?>
 
-        <img class="logo" src="images/logo.png" alt="">
-        <nav class="navbar" id="nav">
-            <span class="gear right" onclick=showMenu();>&#9776;</span>
-            <a href="index.php">Home</a>
-            
-                            <a href="category.php">Technology</a>
-                            <a href="category.php">Programming</a>
-                            <a href="category.php">Security</a>
-                            <a href="category.php">Tutorials</a>
-                    </nav>
-    </header>
-
-                  
         <main class="main">
             <section class="section">
                         <article class="article clearfix">
@@ -84,41 +59,9 @@
                 
             </section>
             
-            <aside class="aside">
-
-                <div class="inner">
-                    <h2>Recent Posts</h2>
-                    <a href="single.php">Microsoft Office 365 Is Now Available On Apple’s Mac Store&nbsp;<b style="color:red">More..</b>  </a>
-                    <a href="single.php">Poisonous Gas Sensor On IPhone And Apple Watch&nbsp;<b style="color:red">More..</b>  </a>
-                    <a href="single.php">5 Best Artificial Intelligence Books&nbsp;<b style="color:red">More..</b>  </a>
-                    <a href="single.php">Best IOS System Repaire Tool To Get You Out Of All Kinds Of IPhone &nbsp;<b style="color:red">More..</b>  </a>
-                </div>
-            
-                <div class="inner">
-                    <h2>Categories</h2>
-                    <a href="category.php">TECHNOLOGY</a>
-                    <a href="category.php">PROGRAMMING</a>
-                    <a href="category.php">SECURITY</a>
-                    <a href="category.php">TUTORIALS</a>
-                </div>
-            </div>
-            </aside>        
+         <?php include("inc/aside.php"); ?>       
         </main>
        
+<?php include("inc/footer.php"); ?>
       
-        <footer class="footer">
-            <h2>&copy;copyright Somcoders Designed by Abdifatah Abdilahi</h2>
-        </footer>
-    
-    </body>
-        <script>
-            function showMenu(){
-               var nav = document.getElementById("nav");
-                if(nav.className === "navbar" ){
-                    nav.className += " responsive";
-                }else{
-                    nav.className = "navbar";
-                }
-            }
-        </script>
-</html>
+      

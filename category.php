@@ -1,28 +1,4 @@
-<!doctype html>
-<html>
-    <head>
-        <title>BoggaHore</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <link href="naqshad.css" rel="stylesheet" type="text/css" />
-    </head>
-    
-    <body>
-    
-     
-    <header class="header clearfix">
-
-        <img class="logo" src="images/logo.png" alt="">
-        <nav class="navbar" id="nav">
-            <span class="gear right" onclick=showMenu();>&#9776;</span>
-            <a href="index.php">Home</a>
-            
-                            <a href="category.php">Technology</a>
-                            <a href="category.php">Programming</a>
-                            <a href="category.php">Security</a>
-                            <a href="category.php">Tutorials</a>
-                    </nav>
-    </header>
+<?php include("inc/header.php"); ?>
 
                   <div class="cat-head">
                         <p>Browsing category</p> 
@@ -72,21 +48,5 @@
         </aside>
                 
         </main>
-       
-      
-        <footer class="footer">
-            <h2>&copy;copyright Somcoders Designed by Abdifatah Abdilahi</h2>
-        </footer>
-    
-    </body>
-        <script>
-            function showMenu(){
-               var nav = document.getElementById("nav");
-                if(nav.className === "navbar" ){
-                    nav.className += " responsive";
-                }else{
-                    nav.className = "navbar";
-                }
-            }
-        </script>
-</html>
+
+<?php include("inc/footer.php"); ?>
