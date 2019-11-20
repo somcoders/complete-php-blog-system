@@ -1,4 +1,4 @@
-<?php include("inc/header.php"); ?>
+<?php include("inc/init.php"); ?>
 
                 <main class="main">
             <section class="section">

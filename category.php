@@ -1,4 +1,4 @@
-<?php include("inc/header.php"); ?>
+<?php include("inc/init.php"); ?>
 
                   <div class="cat-head">
                         <p>Browsing category</p> 

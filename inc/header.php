@@ -16,11 +16,9 @@
         <nav class="navbar" id="nav">
             <span class="gear right" onclick=showMenu();>&#9776;</span>
             <a href="index.php">Home</a>
-            
-                            <a href="category.php">Technology</a>
-                            <a href="category.php">Programming</a>
-                            <a href="category.php">Security</a>
-                            <a href="category.php">Tutorials</a>
+            <?php foreach(get_all("categories") as $category){ ?>
+                <a href="category.php"><?= $category->name ?></a>
+            <?php } ?>
                     </nav>
     </header>
 
