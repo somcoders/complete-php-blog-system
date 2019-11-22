@@ -12,7 +12,8 @@
                     <h2><?php echo capitalize($post->title); ?></h2>
                     <p><?php echo limit_text($post->body,100); ?>[...]</p>
                     <hr>
-                    <h4>Posted on <?php echo $post->created_at; ?>| TECHNOLOGY</h4>
+                    <?php $category = get_single("categories","id",$post->cat_id); ?>
+                    <h4>Posted on <?php echo $post->created_at; ?>| <?=  uppercase($category->name); ?></h4>
                 </a>
                 </div>
             </article>
