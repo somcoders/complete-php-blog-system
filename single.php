@@ -3,15 +3,23 @@
 
     if(isset($_GET["post_id"])){
         $post_id =  intval($_GET["post_id"]);
+    }else{
+        balfis("index.php");
     }
 
     $post = get_single("posts","id",$post_id);
-    $category = get_single("categories","id",$post->cat_id);
+    if($post){
+        $category = get_single("categories","id",$post->cat_id);
+    }else{
+        balfis("index.php");
+    }
+
 
 ?>
 
                 <main class="main">
             <section class="section">
+
                         <article class="article single clearfix">
                 <a href="single.php?post_id=<?= $post->id; ?>">
                     <img  src="images/<?= $post->image; ?>" class="post-image" />

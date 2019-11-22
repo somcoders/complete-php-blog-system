@@ -23,6 +23,9 @@
         return $query;
     }
 
+    function balfis($location){
+        header("location:$location");
+    }
 
     function capitalize($str){
         return ucfirst($str);

@@ -3,7 +3,7 @@
     if(isset($_GET["cat_id"])){
         $cat_id =  intval($_GET["cat_id"]);
     }else{
-        header("location:index.php");
+        balfis("index.php");
     }
 
     $category = get_single("categories","id",$cat_id);
