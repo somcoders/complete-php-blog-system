@@ -4,11 +4,11 @@
             <section class="section">
             <?php foreach(get_all("posts","DESC") as $post){  ?>
             <article class="article clearfix">
-                <a href="single.php">
+                <a href="single.php?post_id=<?= $post->id ?>">
                     <img src="images/image2.jpg" class="post-image" />
                 </a>
                 <div class="content">
-                <a href="single.php">
+                <a href="single.php?post_id=<?= $post->id ?>">
                     <h2><?php echo capitalize($post->title); ?></h2>
                     <p><?php echo limit_text($post->body,100); ?>[...]</p>
                     <hr>
