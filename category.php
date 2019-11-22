@@ -33,7 +33,7 @@
                 foreach($posts as $post){ ?>
                         <article class="article clearfix">
                 <a href="single.php">
-                    <img src="images/image2.jpg" class="post-image" />
+                    <img src="images/<?= $post->image ? $post->image : "placeholder.png"; ?>" class="post-image" />
                 </a>
                 <div class="content">
                 <a href="single.php?post_id=<?= $post->id ?>">

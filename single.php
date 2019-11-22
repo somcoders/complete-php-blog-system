@@ -14,7 +14,6 @@
         balfis("index.php");
     }
 
-
 ?>
 
                 <main class="main">
@@ -22,7 +21,7 @@
 
                         <article class="article single clearfix">
                 <a href="single.php?post_id=<?= $post->id; ?>">
-                    <img  src="images/<?= $post->image; ?>" class="post-image" />
+                    <img  src="images/<?= $post->image ? $post->image : "placeholder.png"; ?>" class="post-image" />
                 </a>
                 <div class="content">
                
