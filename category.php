@@ -2,21 +2,35 @@
 <?php 
     if(isset($_GET["cat_id"])){
         $cat_id =  intval($_GET["cat_id"]);
+    }else{
+        header("location:index.php");
     }
 
     $category = get_single("categories","id",$cat_id);
-    $posts      = get_all_where("posts","cat_id",$category->id);
-   // echo $category->name;
+
+    if($category){
+        $posts      = get_all_where("posts","cat_id",$category->id);
+    }else{
+        $posts = false;
+    }
+
 
 ?>
 
                   <div class="cat-head">
                         <p>Browsing category</p> 
-            <h2><b style="color:red"><?=  uppercase($category->name); ?></b></h2>
+            <?php if($category){ ?>
+                <h2><b style="color:red"><?=  uppercase($category->name); ?></b></h2>
+            <?php }else{
+                echo "<h4>QAYBTA AAD BAASHAYSID MA JIRTO</h4>";
+            } ?>
                      </div>
         <main class="main">
             <section class="section">
-            <?php foreach($posts as $post){ ?>
+            <?php if(!$posts){
+                echo "<h4>QAYBTAN WAX POSTYO AH LAGAMA SOO GELIN</h4>";
+            }else{
+                foreach($posts as $post){ ?>
                         <article class="article clearfix">
                 <a href="single.php">
                     <img src="images/image2.jpg" class="post-image" />
@@ -30,15 +44,15 @@
                 </a>
                 </div>
             </article>
-
-            <?php } ?>
+            <?php } // end of foreach ?>
+            <?php }  // end of if?>
 
                             
              
                 
                 
         </section>
-             
+       <?php if($category){ ?>      
         <aside class="aside">
             <div class="inner">
             <h2><b style="color:red"><?= uppercase($category->name); ?></b> POSTS</h2>
@@ -47,7 +61,7 @@
             <?php } ?>
             </div>
         </aside>
-                
+            <?php } ?>           
         </main>
 
 <?php include("inc/footer.php"); ?>
