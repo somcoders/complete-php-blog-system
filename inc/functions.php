@@ -7,6 +7,12 @@
         return $query;
     }
 
+    function get_single($table,$column,$value){
+        global $db;
+        $query = $db->query("SELECT * FROM $table WHERE $column =  $value")->fetch(PDO::FETCH_OBJ);
+        return $query;
+    }
+
 
     function capitalize($str){
         return ucfirst($str);

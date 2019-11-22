@@ -2,14 +2,16 @@
 <?php 
     if(isset($_GET["cat_id"])){
         $cat_id =  intval($_GET["cat_id"]);
-        echo $cat_id;
     }
-        // echo $_GET['cat_id'];
+
+    $category = get_single("categories","id",$cat_id);
+   // echo $category->name;
+
 ?>
 
                   <div class="cat-head">
                         <p>Browsing category</p> 
-            <h2><b style="color:red">technology</b></h2>
+            <h2><b style="color:red"><?=  uppercase($category->name); ?></b></h2>
                      </div>
         <main class="main">
             <section class="section">

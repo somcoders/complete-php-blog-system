@@ -3,24 +3,26 @@
 
     if(isset($_GET["post_id"])){
         $post_id =  intval($_GET["post_id"]);
-        echo $post_id;
     }
+
+    $post = get_single("posts","id",$post_id);
+    $category = get_single("categories","id",$post->cat_id);
 
 ?>
 
                 <main class="main">
             <section class="section">
                         <article class="article single clearfix">
-                <a href="single.php">
-                    <img  src="images/image2.jpg" class="post-image" />
+                <a href="single.php?post_id=<?= $post->id; ?>">
+                    <img  src="images/<?= $post->image; ?>" class="post-image" />
                 </a>
                 <div class="content">
                
-                    <h2>Microsoft Office 365 Is Now Available On Apple’s Mac Store</h2>
-                    <p>Last year at WWDC Apple promised to launch Microsoft Office 365. Apple has finally announced on Thursday that Microsoft Office 365 is now available on Mac App Store. Users can now directly download the signature Microsoft apps such as Outlook, Word, PowerPoint, OneNote, and Excel on their MacOS computers.</p>
+                    <h2><?= $post->title; ?></h2>
+                    <p><?= $post->body; ?></p>
                 
                     <hr>
-                    <h4>Posted on 2019-11-01 16:05:41| TECHNOLOGY</h4>
+                    <h4>Posted on <?= $post->created_at; ?>| <?= $category->name; ?></h4>
               
                 </div>
             </article>
