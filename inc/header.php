@@ -17,7 +17,7 @@
             <span class="gear right" onclick=showMenu();>&#9776;</span>
             <a href="index.php">Home</a>
             <?php foreach(get_all("categories") as $category){ ?>
-                <a href="category.php"><?= $category->name ?></a>
+                <a href="category.php"><?= capitalize($category->name) ?></a>
             <?php } ?>
                     </nav>
     </header>
