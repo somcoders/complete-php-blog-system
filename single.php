@@ -1,4 +1,12 @@
 <?php include("inc/init.php"); ?>
+<?php
+
+    if(isset($_GET["post_id"])){
+        $post_id =  intval($_GET["post_id"]);
+        echo $post_id;
+    }
+
+?>
 
                 <main class="main">
             <section class="section">

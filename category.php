@@ -1,4 +1,11 @@
 <?php include("inc/init.php"); ?>
+<?php 
+    if(isset($_GET["cat_id"])){
+        $cat_id =  intval($_GET["cat_id"]);
+        echo $cat_id;
+    }
+        // echo $_GET['cat_id'];
+?>
 
                   <div class="cat-head">
                         <p>Browsing category</p> 
