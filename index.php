@@ -13,7 +13,7 @@
                     <p><?php echo limit_text($post->body,100); ?>[...]</p>
                     <hr>
                     <?php $category = get_single("categories","id",$post->cat_id); ?>
-                    <h4>Posted on <?php echo $post->created_at; ?>| <?=  uppercase($category->name); ?></h4>
+                    <h4>Posted on <?php echo clean_date($post->created_at); ?>| <?=  uppercase($category->name); ?></h4>
                 </a>
                 </div>
             </article>

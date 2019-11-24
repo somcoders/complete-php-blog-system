@@ -40,7 +40,7 @@
                     <h2><?php echo capitalize($post->title); ?></h2>
                     <p><?php echo limit_text($post->body,100); ?>[...]</p>
                     <hr>
-                    <h4>Posted on <?php echo $post->created_at; ?>| <?= $category->name ?></h4>
+                    <h4>Posted on <?php echo clean_date($post->created_at); ?>| <?= $category->name ?></h4>
                 </a>
                 </div>
             </article>

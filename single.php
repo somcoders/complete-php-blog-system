@@ -29,7 +29,7 @@
                     <p><?= $post->body; ?></p>
                 
                     <hr>
-                    <h4>Posted on <?= $post->created_at; ?>| <?= $category->name; ?></h4>
+                    <h4>Posted on <?= clean_date($post->created_at); ?>| <?= $category->name; ?></h4>
               
                 </div>
             </article>

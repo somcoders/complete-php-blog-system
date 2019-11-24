@@ -10,21 +10,27 @@
 
     function get_single($table,$column,$value){
         global $db;
-        $query      = $db->query("SELECT * FROM $table WHERE $column =  $value");
-        $query      = $query->fetch(PDO::FETCH_OBJ);
-        return $query;
+        $query      = $db->prepare("SELECT * FROM $table WHERE $column = ?");
+        $query->execute([$value]);
+        return  $query->fetch(PDO::FETCH_OBJ);
     }
 
     
     function get_all_where($table,$column,$value){
         global $db;
-        $query   = $db->query("SELECT * FROM $table WHERE $column =  $value");
-        $query   =$query->fetchAll(PDO::FETCH_OBJ);
-        return $query;
+        $query   = $db->prepare("SELECT * FROM $table WHERE $column =  $value");
+        $query->execute([$value]);
+        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+
+    //waxay kuu geyneysaa bog kale
     function balfis($location){
         header("location:$location");
+    }
+
+    function clean_date($date){
+        return date("j F Y",strtotime($date));
     }
 
     function capitalize($str){
