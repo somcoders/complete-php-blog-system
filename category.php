@@ -38,7 +38,7 @@
                 <div class="content">
                 <a href="single.php?post_id=<?= $post->id ?>">
                     <h2><?php echo capitalize($post->title); ?></h2>
-                    <p><?php echo limit_text($post->body,100); ?>[...]</p>
+                    <p><?php echo escape(limit_text($post->body,100)); ?>[...]</p>
                     <hr>
                     <h4>Posted on <?php echo clean_date($post->created_at); ?>| <?= $category->name ?></h4>
                 </a>

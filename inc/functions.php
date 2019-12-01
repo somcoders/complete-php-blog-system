@@ -44,6 +44,10 @@
     function limit_text($str,$end){
         return substr($str,0,$end);
     }
+
+    function escape($string){
+        return htmlspecialchars($string);
+    }
     
 
     

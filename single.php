@@ -25,8 +25,8 @@
                 </a>
                 <div class="content">
                
-                    <h2><?= $post->title; ?></h2>
-                    <p><?= $post->body; ?></p>
+                    <h2><?= escape($post->title); ?></h2>
+                    <p><?= escape($post->body); ?></p>
                 
                     <hr>
                     <h4>Posted on <?= clean_date($post->created_at); ?>| <?= $category->name; ?></h4>
