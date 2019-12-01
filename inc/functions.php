@@ -38,6 +38,20 @@
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
+    function count_rows($table,$where = null){
+        global $db;
+        try{
+            if($where){
+                $query   = $db->query("SELECT count(*) FROM $table WHERE $where")->fetchColumn();
+            }else{
+                $query   = $db->query("SELECT count(*) FROM $table")->fetchColumn();
+            }
+        }catch(PDOException $e){
+            die("Cilad " . $e->getMessage()); 
+        }
+        return $query;
+    }
+
 
     //waxay kuu geyneysaa bog kale
     function balfis($location){

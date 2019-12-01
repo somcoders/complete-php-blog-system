@@ -16,8 +16,9 @@
                                         <i class="fa fa-book fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><h4>20</h2></div>
-                                        <div>Published Posts</div>
+                                        <div class="huge">
+                                        <h4><?= count_rows("posts"); ?></h4></div>
+                                        <div>All Posts</div>
                                     </div>
                                 </div>
                             </div>
@@ -32,8 +33,10 @@
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">10</div>
-                                        <div>User</div>
+                                        <div class="huge">
+                                        <h4><?= count_rows("categories"); ?></h4>
+                                        </div>
+                                        <div>Categories</div>
                                     </div>
                                 </div>
                             </div>
@@ -48,8 +51,10 @@
                                         <i class="fa fa-university fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">5</div>
-                                        <div>Categories</div>
+                                        <div class="huge">
+                                            <h4><?= count_rows("posts"," status = 1"); ?></h4>    
+                                        </div>
+                                        <div>Published Posts</div>
                                     </div>
                                 </div>
                             </div>
@@ -64,8 +69,10 @@
                                         <i class="fa fa-play-circle fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">21</div>
-                                        <div>Un published</div>
+                                        <div class="huge">
+                                        <h4><?= count_rows("posts"," status = 0"); ?></h4>
+                                        </div>
+                                        <div>Unpublished Posts</div>
                                     </div>
                                 </div>
                             </div>
