@@ -3,23 +3,38 @@
 
     function get_all($table,$order = "ASC"){
         global $db;
-        $query      = $db->query("SELECT * FROM $table ORDER BY created_at $order");
-        $query      =$query->fetchAll(PDO::FETCH_OBJ);
+
+        try{
+            $query      = $db->query("SELECT * FROM $table ORDER BY created_at $order");
+            $query      =$query->fetchAll(PDO::FETCH_OBJ);
+        }catch(PDOException $e){
+           die("Cilad " . $e->getMessage()); 
+        }
+
         return $query;
     }
 
     function get_single($table,$column,$value){
         global $db;
+        try{
         $query      = $db->prepare("SELECT * FROM $table WHERE $column = ?");
         $query->execute([$value]);
+        }catch(PDOException $e){
+        die("Cilad " . $e->getMessage()); 
+    }
         return  $query->fetch(PDO::FETCH_OBJ);
     }
 
     
+    
     function get_all_where($table,$column,$value){
         global $db;
+        try{
         $query   = $db->prepare("SELECT * FROM $table WHERE $column =  $value");
         $query->execute([$value]);
+        }catch(PDOException $e){
+            die("Cilad " . $e->getMessage()); 
+        }
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
