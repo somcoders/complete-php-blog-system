@@ -52,6 +52,15 @@
         return $query;
     }
 
+    function get_status($status){ // expects 0 or 1
+        switch($status){
+            case 0 : return "Draft"; break;
+            case 1 : return "Published"; break;
+            default : return "Unknown";
+        }
+
+    }
+
 
     //waxay kuu geyneysaa bog kale
     function balfis($location){

@@ -1,4 +1,4 @@
-<?php include("inc/nav.php"); ?>
+<?php include("inc/init-admin.php"); ?>
         <!-- Keep all page content within the page-content inset div! -->
         <div class="page-content inset">
           <div class="row">
@@ -19,30 +19,28 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Desc</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Posted</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
+                            
+                            <?php
+                            foreach(get_all("posts") as $post) {?>
                             <tr>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>update</td>
+                                <td><?=  escape($post->title); ?></td>
+                                <?php $category = get_single("categories","id",$post->cat_id);   ?>
+                                <td><?=  capitalize(($category->name)); ?></td>
+                                <td><?=  clean_date($post->created_at); ?></td>
+                                <td><?=  get_status($post->status); ?></td>
+                                <td>Update</td>
                                 <td>Delete</td>
                             </tr>
-                            <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>update</td>
-                                <td>Delete</td>
-                            </tr>
-                            <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>update</td>
-                                <td>Delete</td>
-                            </tr>
+                            <?php } ?>
+                 
                             </tbody>
                         </table>
                         </div>

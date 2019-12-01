@@ -88,19 +88,24 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Category</th>
+                                <th>Status</th>
                                 <th>Author</th>
                                 <th>Created</th>
-                                <th>Status</th>
+                                
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach(get_all("posts") as $post) {?>
+                            
+                            <?php
+                            foreach(get_all("posts") as $post) {?>
                             <tr>
                                 <td><?=  escape($post->title); ?></td>
-                                <td><?=  escape($post->created_at); ?></td>
-                                <td>Author</td>
-                                <td>Posted</td>
-                                <td>Pending</td>
+                                <?php $category = get_single("categories","id",$post->cat_id);   ?>
+                                <td><?=  capitalize(($category->name)); ?></td>
+                                <td><?=  clean_date($post->created_at); ?></td>
+                                <td><?=  get_status($post->status); ?></td>
+                                <td>Update</td>
+                                <td>Delete</td>
                             </tr>
                             <?php } ?>
                  

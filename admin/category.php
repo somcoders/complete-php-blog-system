@@ -44,16 +44,16 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Desc</th>
+                                <th>Status</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach(get_all("categories") as $post) {?>
+                            <?php foreach(get_all("categories") as $category) {?>
                             <tr>
-                                <td><?=  escape($post->name); ?></td>
-                                <td><?=  $post->created_at; ?></td>
+                                <td><?=  escape(ucfirst($category->name)) ; ?></td>
+                                <td><?=  get_status($category->status); ?></td>
                                 <td>update</td>
                                 <td>Delete</td>
                             </tr>
