@@ -1,4 +1,4 @@
-   <?php include("inc/nav.php"); ?>
+   <?php include("inc/init-admin.php"); ?>
         <!-- Keep all page content within the page-content inset div! -->
         <div class="page-content inset">
           <div class="row">
@@ -87,27 +87,16 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <?php foreach(get_all("posts") as $post) {?>
                             <tr>
-                                <td>John</td>
-                                <td>Doe</td>
+                                <td><?=  escape($post->title); ?></td>
+                                <td><?=  escape($post->created_at); ?></td>
                                 <td>Author</td>
                                 <td>Posted</td>
                                 <td>Pending</td>
                             </tr>
-                            <tr>
-                                <td>Mary</td>
-                                <td>Moe</td>
-                                <td>Author</td>
-                                <td>Posted</td>
-                                <td>Pending</td>
-                            </tr>
-                            <tr>
-                                <td>July</td>
-                                <td>Dooley</td>
-                                <td>Author</td>
-                                <td>Posted</td>
-                                <td>Pending</td>
-                            </tr>
+                            <?php } ?>
+                 
                             </tbody>
                         </table>
                         </div>
