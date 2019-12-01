@@ -36,8 +36,8 @@
                                 <td><?=  capitalize(($category->name)); ?></td>
                                 <td><?=  clean_date($post->created_at); ?></td>
                                 <td><?=  get_status($post->status); ?></td>
-                                <td>Update</td>
-                                <td>Delete</td>
+                                <td><a href="post.php?post_id=<?= escape($post->id); ?>">Update</a></td>
+                                <td><a href="post.php?post_id=<?= escape($post->id); ?>&action=del">Delete</a></td>
                             </tr>
                             <?php } ?>
                  

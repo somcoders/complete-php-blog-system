@@ -54,8 +54,8 @@
                             <tr>
                                 <td><?=  escape(ucfirst($category->name)) ; ?></td>
                                 <td><?=  get_status($category->status); ?></td>
-                                <td>update</td>
-                                <td>Delete</td>
+                                <td><a href="category.php?cat_id=<?= escape($category->id); ?>">Update</a></td>
+                                <td><a href="category.php?cat_id=<?= escape($category->id); ?>&action=del">Delete</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>
