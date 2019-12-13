@@ -86,7 +86,7 @@
                             <tr>
                                 <td><?=  escape(ucfirst($category->name)) ; ?></td>
                                 <td><?=  get_status($category->status); ?></td>
-                                <td><a href="category.php?cat_id=<?= escape($category->id); ?>">Update</a></td>
+                                <td><a href="edit-category.php?cat_id=<?= escape($category->id); ?>">Edit</a></td>
                                 <td><a href="category.php?cat_id=<?= escape($category->id); ?>&action=del">Delete</a></td>
                             </tr>
                             <?php } ?>
