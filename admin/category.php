@@ -1,8 +1,11 @@
 <?php include("inc/init-admin.php"); ?>
 <?php
-
   $messages = array();
   if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])){
+      balfis("400.php");
+    }
+    
     $category = array(
       "name"          => $_POST["name"],
       "description"   => $_POST["desc"],
@@ -70,7 +73,7 @@
                                     <label for="usr">Desc:</label>
                                      <textarea name="desc" class="form-control" ></textarea>
                                 </div>
-
+                                <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
                                 <div class="form-group">
                                     <label>Visible</label>
                                     <label class="radio-inline"><input type="radio" value="1" name="visible" checked>Yes</label>
