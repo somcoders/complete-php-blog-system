@@ -1,6 +1,7 @@
 <?php include("inc/init-admin.php"); ?>
 <?php
 
+  $messages = array();
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     $category = array(
       "name"          => $_POST["name"],
@@ -8,14 +9,20 @@
       "visible"       => $_POST["visible"],
     );
 
-    $sql = $db->prepare("INSERT INTO categories(name,description,status)
-    VALUES(:name,:description,:visible)");
-    $sql->execute($category);
-    if($db->lastInsertId()){
-      echo "Category Added successfully";
+    if($_POST["name"] == "" || $_POST["desc"] == ""){
+      $messages[] =  "Fadlan buuxi magaca iyo faahfaahinta";
     }else{
-      echo "Failed";
+      $sql = $db->prepare("INSERT INTO categories(name,description,status)
+      VALUES(:name,:description,:visible)");
+      $sql->execute($category);
+      if($db->lastInsertId()){
+        $messages[] =  "Category Added successfully";
+      }else{
+        $messages[] =  "Failed";
+      }
     }
+
+   
   }
 
   if(isset($_GET["cat_id"]) && isset($_GET["action"])){
@@ -23,7 +30,7 @@
       $sql  = $db->prepare("DELETE FROM categories WHERE id = ?");
       $sql->execute([$cat_id]);
       if($sql){
-        echo "Category Deleted successfully";
+        $messages[] = "Category Deleted successfully";
       }
 
   }
@@ -44,10 +51,19 @@
                      <div class="panel panel-default">
                         <div class="panel panel-heading">   <p>Add Category</p></div>
                         <div class="panel panel-body">
+                        <?php 
+                        if($messages){
+                          echo "<ul>";
+                          foreach($messages as $m){
+                            echo "<li class='text-info'><b> $m </b></li>";
+                          } 
+                          echo "</ul>";
+                        }
+                        ?>
                         <form method="post">
                                 <div class="form-group">
                                     <label for="usr">Category Name:</label>
-                                     <input type="text" name="name" class="form-control" id="usr">
+                                     <input type="text" name="name" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">

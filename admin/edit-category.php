@@ -1,7 +1,7 @@
 <?php include("inc/init-admin.php"); ?>
 <?php
 
-    
+    $messages = array();
   if(isset($_GET["cat_id"])){
     $cat_id   = intval($_GET["cat_id"]);
     $cat      = get_single("categories","id",$cat_id);
@@ -22,20 +22,23 @@
       "description"   => $_POST["desc"],
       "status"       => $_POST["visible"],
     );
-
+    if($_POST["name"] == "" || $_POST["desc"] == ""){
+      $messages[] =  "Fadlan buuxi magaca iyo faahfaahinta";
+    }else{
     try{
-    $sql = $db->prepare("UPDATE  categories SET 
-    name        = :name,
-    description = :description,
-    status      = :status
-    WHERE id    = :id");
-$sql->execute($category);
+        $sql = $db->prepare("UPDATE  categories SET 
+        name        = :name,
+        description = :description,
+        status      = :status
+        WHERE id    = :id");
+        $sql->execute($category);
 
     }catch(PDOException $e){
-        die($e->getMessage());
+            die($e->getMessage());
     }
     balfis("category.php?action=update");
   }
+}
 
 
 ?>
@@ -54,10 +57,19 @@ $sql->execute($category);
                      <div class="panel panel-default">
                         <div class="panel panel-heading">   <p>Add Category</p></div>
                         <div class="panel panel-body">
+                        <?php 
+                        if($messages){
+                          echo "<ul>";
+                          foreach($messages as $m){
+                            echo "<li class='text-info'><b> $m </b></li>";
+                          } 
+                          echo "</ul>";
+                        }
+                        ?>
                         <form method="post">
                                 <div class="form-group">
                                     <label for="usr">Category Name:</label>
-                                     <input type="text" name="name" class="form-control" value=<?= $cat ? $cat->name : ""  ?>>
+                                     <input type="text" name="name" class="form-control" value=<?= $cat ? $cat->name : ""  ?> required>
                                 </div>
 
                                 <div class="form-group">
