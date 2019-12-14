@@ -2,10 +2,8 @@
 <?php
   $messages = array();
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if (!hash_equals($_SESSION['csrf'], $_POST['csrf'])){
-      balfis("400.php");
-    }
-    
+    csrf_check($_POST["csrf"]);
+
     $category = array(
       "name"          => $_POST["name"],
       "description"   => $_POST["desc"],
@@ -55,13 +53,7 @@
                         <div class="panel panel-heading">   <p>Add Category</p></div>
                         <div class="panel panel-body">
                         <?php 
-                        if($messages){
-                          echo "<ul>";
-                          foreach($messages as $m){
-                            echo "<li class='text-info'><b> $m </b></li>";
-                          } 
-                          echo "</ul>";
-                        }
+                          $messages  ? messages($messages) : "";
                         ?>
                         <form method="post">
                                 <div class="form-group">
