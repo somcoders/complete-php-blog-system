@@ -67,7 +67,7 @@
         }
       }
     
-      function update($table,$data){
+    function update($table,$data){
         global $db;
     
         //waxaan samaystay array madhan.
@@ -81,7 +81,7 @@
           $sql = $db->prepare("UPDATE  $table SET 
           $keyVal
           WHERE id    = :id");
-          
+
           $sql->execute($data);
           return $sql ? true : false;
     
@@ -91,6 +91,18 @@
       }
     
 
+      function delete($table,$id){
+        global $db;
+    
+        try{
+          $sql = $db->prepare("DELETE FROM  $table WHERE id    = :id");
+          $sql->execute([":id" => $id]);
+          return $sql ? true : false;
+    
+        }catch(PDOException $e){
+              die($e->getMessage());
+        }
+      }
 
 
     function get_status($status){ // expects 0 or 1

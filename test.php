@@ -9,20 +9,12 @@ $category = array(
 );
 
 
-function update($table,$data){
+function delete($table,$id){
     global $db;
 
-    $pairs = array();
-    foreach($data as $k => $v){
-        $pairs[] = $k . " = :" . $k;
-    }
-    $keyVal = implode(",",$pairs);
-
     try{
-      $sql = $db->prepare("UPDATE  $table SET 
-      $keyVal
-      WHERE id    = :id");
-      $sql->execute($data);
+      $sql = $db->prepare("DELETE FROM  $table WHERE id    = :id");
+      $sql->execute($id);
       return $sql ? true : false;
 
     }catch(PDOException $e){

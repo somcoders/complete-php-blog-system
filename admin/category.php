@@ -24,10 +24,10 @@
    
   }
 
-  if(isset($_GET["cat_id"]) && isset($_GET["action"])){
+  if(isset($_GET["cat_id"]) && isset($_GET["token"])){
+    csrf_check($_GET["token"]);
       $cat_id   = intval($_GET["cat_id"]);
-      $sql  = $db->prepare("DELETE FROM categories WHERE id = ?");
-      $sql->execute([$cat_id]);
+      $sql  = delete("categories",$cat_id);
       if($sql){
         $messages[] = "Category Deleted successfully";
       }
@@ -96,7 +96,7 @@
                                 <td><?=  escape(ucfirst($category->name)) ; ?></td>
                                 <td><?=  get_status($category->status); ?></td>
                                 <td><a href="edit-category.php?cat_id=<?= escape($category->id); ?>">Edit</a></td>
-                                <td><a href="category.php?cat_id=<?= escape($category->id); ?>&action=del">Delete</a></td>
+                                <td><a href="category.php?cat_id=<?= escape($category->id); ?>&token=<?=  escape($_SESSION["csrf"]); ?>">Delete</a></td>
                             </tr>
                             <?php } ?>
                             </tbody>
