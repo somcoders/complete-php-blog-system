@@ -52,6 +52,22 @@
         return $query;
     }
 
+    function insert($table,$data){
+        global $db;
+        $columns   =  implode(",",array_keys($data));
+        $values    =  ":" . implode(",:",array_keys($data));
+        
+        try{
+          $sql = $db->prepare("INSERT INTO $table ($columns)
+          VALUES($values)");
+          $sql->execute($data);
+          return $db->lastInsertId() ? true : false;
+        }catch(PDOException $e){
+          die("Cilad ayaa jirta " . $e->getMessage());
+        }
+      }
+    
+
 
 
     function get_status($status){ // expects 0 or 1

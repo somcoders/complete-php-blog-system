@@ -4,18 +4,16 @@
   if($_SERVER["REQUEST_METHOD"] == "POST"){
     csrf_check($_POST["csrf"]);
 
-    $category = array(
+    $categoryData = array(
       "name"          => $_POST["name"],
       "description"   => $_POST["desc"],
-      "visible"       => $_POST["visible"],
+      "status"        => $_POST["visible"],
     );
 
     if($_POST["name"] == "" || $_POST["desc"] == ""){
       $messages[] =  "Fadlan buuxi magaca iyo faahfaahinta";
     }else{
-      $sql = $db->prepare("INSERT INTO categories(name,description,status)
-      VALUES(:name,:description,:visible)");
-      $sql->execute($category);
+      $sql = insert("categories", $categoryData);
       if($db->lastInsertId()){
         $messages[] =  "Category Added successfully";
       }else{

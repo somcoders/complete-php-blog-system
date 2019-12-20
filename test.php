@@ -1,28 +1,19 @@
 <?php include("inc/init.php"); ?>
 <?php
 
-$category = array(
-    "id"            => 22,
-    "name"          => "Abdifatah ",
-    "description"   => "Abdilahi",
-    "status"        => 2
-  );
-
-    // $pairs = array();
-    // foreach($category as $k => $v){
-    // $pair = $k." = :".$k;
-    // $pairs[] = $pair;
-    // }
-    // echo implode("," ,$pairs) ;
-  //echo $columns . $values;
-
-
-
-  $data     =   update("categories",$category);
-  if($data){
-      echo "Inserted";
+function insert($table,$data){
+  global $db;
+  $columns   =  implode(",",array_keys($category));
+  $values    =  ":" . implode(",:",array_keys($category));
+  
+  try{
+    $sql = $db->prepare("INSERT INTO $table ($columns)
+    VALUES($values)");
+    $sql->execute($category);
+    return $db->lastInsertId() ? true : false;
+  }catch(PDOException $e){
+    die("Cilad ayaa jirta " . $e->getMessage());
   }
-
-
+}
 
 ?>
