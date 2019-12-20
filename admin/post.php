@@ -1,4 +1,21 @@
 <?php include("inc/init-admin.php"); ?>
+
+<?php
+
+$messages = [];
+if(isset($_GET["post_id"]) && isset($_GET["token"])){
+  csrf_check($_GET["token"]);
+    $post_id   = intval($_GET["post_id"]);
+    $sql  = delete("posts",$post_id);
+    if($sql){
+      $messages[] = "Post Deleted successfully";
+    }
+
+}
+
+
+
+?>
         <!-- Keep all page content within the page-content inset div! -->
         <div class="page-content inset">
           <div class="row">
@@ -15,13 +32,16 @@
                     <div class="panel panel-heading">   
                       <p>Posts <a class="pull-right" href="new-post.php">New Post</a></p></div>
                         <div class="panel panel-body">
+                        <?php 
+                          $messages  ? messages($messages) : "";
+                        ?>
                         <table class="table table-bordered table-hovered">
                             <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Status</th>
                                 <th>Posted</th>
+                                <th>Status</th>
                                 <th>Update</th>
                                 <th>Delete</th>
                             </tr>
@@ -37,7 +57,7 @@
                                 <td><?=  clean_date($post->created_at); ?></td>
                                 <td><?=  get_status($post->status); ?></td>
                                 <td><a href="post.php?post_id=<?= escape($post->id); ?>">Update</a></td>
-                                <td><a href="post.php?post_id=<?= escape($post->id); ?>&action=del">Delete</a></td>
+                                <td><a href="post.php?post_id=<?= escape($post->id); ?>&token=<?= escape($_SESSION["csrf"]);  ?>">Delete</a></td>
                             </tr>
                             <?php } ?>
                  
