@@ -16,27 +16,22 @@
 
 
   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $category = array(
+    $categoryData = array(
         "id"          => $cat->id,
       "name"          => $_POST["name"],
       "description"   => $_POST["desc"],
       "status"       => $_POST["visible"],
     );
+
     if($_POST["name"] == "" || $_POST["desc"] == ""){
       $messages[] =  "Fadlan buuxi magaca iyo faahfaahinta";
     }else{
-    try{
-        $sql = $db->prepare("UPDATE  categories SET 
-        name        = :name,
-        description = :description,
-        status      = :status
-        WHERE id    = :id");
-        $sql->execute($category);
+      $data =  update("categories",$categoryData);
 
-    }catch(PDOException $e){
-            die($e->getMessage());
-    }
-    balfis("category.php?action=update");
+      if($data){
+        $messages[] = "Category Updated Successfully";
+      }
+    //balfis("category.php?action=update");
   }
 }
 

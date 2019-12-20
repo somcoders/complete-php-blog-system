@@ -67,6 +67,29 @@
         }
       }
     
+      function update($table,$data){
+        global $db;
+    
+        //waxaan samaystay array madhan.
+        $pairs = array();
+        foreach($data as $k => $v){
+            $pairs[] = $k . " = :" . $k;
+        }
+        $keyVal = implode(",",$pairs);
+    
+        try{
+          $sql = $db->prepare("UPDATE  $table SET 
+          $keyVal
+          WHERE id    = :id");
+          
+          $sql->execute($data);
+          return $sql ? true : false;
+    
+        }catch(PDOException $e){
+              die($e->getMessage());
+        }
+      }
+    
 
 
 
