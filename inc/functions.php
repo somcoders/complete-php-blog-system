@@ -52,6 +52,8 @@
         return $query;
     }
 
+
+
     function get_status($status){ // expects 0 or 1
         switch($status){
             case 0 : return "<b class='text-danger'>Draft</b>"; break;
@@ -87,10 +89,17 @@
         return htmlspecialchars($string);
     }
     
+    function csrf_check($input){
+        if (!hash_equals($_SESSION['csrf'], $input)){
+            balfis("400.php");
+        }
+    }
 
-    
-    // foreach(get_all("categories") as $post){
-    //     echo "<br />";
-    //     echo $post->name; //FETCH_OBJ
-    // }
+    function messages($messages){
+        echo "<ul>";
+        foreach($messages as $m){
+            echo "<li class='text-info'><b> $m </b></li>";
+        } 
+        echo "</ul>";
+    }
 ?>
