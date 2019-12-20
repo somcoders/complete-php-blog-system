@@ -5,20 +5,31 @@ $messages = array();
 if($_SERVER["REQUEST_METHOD"] == "POST"){
   csrf_check($_POST["csrf"]);
 
+    
+  $target_dir = "../images/";
+  $file_tmp       = $_FILES["image"]["tmp_name"];
+  $imageFileType = strtolower(pathinfo($file_tmp,PATHINFO_EXTENSION));
+  $ramdom_name    = rand();
+  $extention      = ".jpg";
+ 
+
+  
   $postData = array(
     "title"          => $_POST["title"],
     "body"           => $_POST["body"],
     "status"         => $_POST["status"],
     "cat_id"         => $_POST["category"],
-    "image"          => "placeholder.png",
+    "image"          => $ramdom_name.".jpg",
     "user_id"        => 1
   );
+  
 
   if($_POST["title"] == "" || $_POST["body"] == ""){
     $messages[] =  "Fadlan buuxi Ciwaanka iyo faahfaahinta";
   }else{
     $sql = insert("posts", $postData);
-    if($db->lastInsertId()){
+    if($sql){
+      move_uploaded_file($file_tmp, $target_dir.$ramdom_name.$extention);
       $messages[] =  "Post Added successfully";
     }else{
       $messages[] =  "Failed";
@@ -51,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <?php 
                           $messages  ? messages($messages) : "";
                         ?>
-                      <form method="post">
+                      <form method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="usr">Title</label>
                                      <input type="text" name="title" class="form-control" id="usr">
@@ -78,7 +89,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="file"  name="image" class="form-control">
+                                    <input type="file"  name="image" class="form-control" required>
                                 </div>
                                 <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">     
                                 <div class="form-group">
