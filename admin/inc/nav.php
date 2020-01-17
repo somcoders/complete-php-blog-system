@@ -51,7 +51,7 @@
             <a href="setting.php"><i class="fa fa-cog"></i> Settings</a>
           </li>
           <li>
-            <a href="logout.php"><i class="fa fa-arrow-right"></i> Logout</a>
+            <a href="logout.php?token=<?=  escape($_SESSION["csrf"]); ?>"><i class="fa fa-arrow-right"></i> Logout</a>
           </li>
         </ul>
       </div>

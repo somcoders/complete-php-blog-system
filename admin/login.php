@@ -1,4 +1,11 @@
 <?php include("inc/init-login.php"); 
+
+
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true ){
+    balfis("index.php");
+    exit;
+}
+
    $messages = array();
    if($_SERVER["REQUEST_METHOD"] == "POST"){
      csrf_check($_POST["csrf"]);
