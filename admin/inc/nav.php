@@ -33,7 +33,8 @@
     <div id="wrapper">
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="sidebar-brand"><a href="#">Welcome Admin</a></li>
+          <li class="sidebar-brand"><a href="#">Welcome 
+          <?php echo $_SESSION['username'] ? $_SESSION['username'] : "" ?></a></li>
           <li>
             <a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>

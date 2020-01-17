@@ -1,5 +1,23 @@
 <?php include("inc/init-login.php"); 
-    echo $_SESSION['csrf'];
+   $messages = array();
+   if($_SERVER["REQUEST_METHOD"] == "POST"){
+     csrf_check($_POST["csrf"]);
+ 
+    $username =  str_replace(" ","",$_POST["username"]);
+    $user = get_single("users","username",$username);
+    if($user){
+        if(password_verify($_POST["password"],$user->password)){
+            $_SESSION["loggedin"]   = true;
+            $_SESSION["id"]         = $user->id;
+            $_SESSION["username"]   = $user->username;
+            balfis("index.php");
+        }else{
+            $messages[] =  "Invalid password";
+        }
+    }else{
+        $messages[] =  "Invalid username or password";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,14 +51,13 @@
 
   <body>
     <!-- Sidebar -->
-    <div id="wrapper">
     <div class="container">
     <div class="col-md-4 col-md-offset-4" style="margin-top:100px">
                      <div class="panel panel-default">
                         <div class="panel panel-heading">   <p>Login</p></div>
                         <div class="panel panel-body">
                         <?php 
-                         // $messages  ? messages($messages) : "";
+                         $messages  ? messages($messages) : "";
                         ?>
                         <form method="post">
                                 <div class="form-group">
