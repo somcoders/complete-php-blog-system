@@ -63,7 +63,7 @@
             <div class="col-md-12">
               <ul class="breadcrumb">
                 <li><a href="index.php">Dashboard</a></li>
-                <li><a href="#">Categories</a></li>
+                <li><a href="#">Users</a></li>
               </ul>
             </div> <!--  end of breadcrumbs -->
             
@@ -112,7 +112,7 @@
                 </div>
                   <div class="col-md-8">
                     <div class="panel panel-default">
-                    <div class="panel panel-heading">   <p>Categories</p></div>
+                    <div class="panel panel-heading">   <p>Users</p></div>
                         <div class="panel panel-body">
                         <table class="table table-bordered table-hovered">
                             <thead>
