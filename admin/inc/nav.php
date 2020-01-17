@@ -44,7 +44,7 @@
             <a href="post.php"><i class="fa fa-pencil"></i> Posts</a>
           </li>
           <li>
-            <a href="user.php"><i class="fa fa-user"></i> Users</a>
+            <a href="users.php"><i class="fa fa-user"></i> Users</a>
           </li>
           <li>
             <a href="setting.php"><i class="fa fa-cog"></i> Settings</a>

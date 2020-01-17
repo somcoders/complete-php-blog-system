@@ -111,7 +111,15 @@
             case 1 : return "<b class='text-success'>Published</b>"; break;
             default : return "Unkown";
         }
+    }
 
+    
+    function get_role($status){ // expects 0 or 1
+        switch($status){
+            case 0 : return "<b class='text-info'>Editor</b>"; break;
+            case 1 : return "<b class='text-success'>Admin</b>"; break;
+            default : return "Unkown";
+        }
     }
 
 
