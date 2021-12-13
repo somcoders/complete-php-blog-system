@@ -2,7 +2,7 @@
 
         <main class="main">
             <section class="section">
-            <?php foreach(get_all("posts","DESC") as $post){  ?>
+            <?php foreach(get_all_where("posts","status",1) as $post){  ?>
             <article class="article clearfix">
                 <a href="single.php?post_id=<?= $post->id ?>">
                     <img src="images/<?= $post->image ? $post->image : "placeholder.png"; ?>" class="post-image" />
