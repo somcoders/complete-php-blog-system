@@ -108,10 +108,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">     
                                 <div class="form-group">
                                     <label>Visible</label>
-                                    <label class="radio-inline"><input type="radio" name="status" 
+                                    <label class="radio-inline"><input type="radio" name="status" value="1"
                                     <?= $post->status == 1 ? "checked" : ""?>
                                     >Yes</label>
-                                    <label class="radio-inline"><input type="radio" name="status"
+                                    <label class="radio-inline"><input type="radio" name="status" value="0"
                                     <?= $post->status == 0 ? "checked" : ""?>
                                     >No</label>
                                 </div>
