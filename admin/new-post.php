@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     "status"         => $_POST["status"],
     "cat_id"         => $_POST["category"],
     "image"          => $ramdom_name.".jpg",
-    "user_id"        => 1
+    "user_id"        => $_SESSION["id"] 
   );
   
 

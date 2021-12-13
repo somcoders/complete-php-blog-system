@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     "status"         => $_POST["status"],
     "cat_id"         => $_POST["category"],
     "image"          =>  $file_tmp ? $ramdom_name.".jpg" : $post->image,
-    "user_id"        => 1
+    "user_id"        => $_SESSION["id"]
   );
   
 
